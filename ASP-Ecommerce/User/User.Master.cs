@@ -11,7 +11,12 @@ namespace ASP_Ecommerce.User
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.Url.AbsolutePath.ToString().Contains("Default.aspx"))
+            {
+                // Load the control
+                Control sliderUserControl = (Control)Page.LoadControl("SliderUserControl.ascx");
+                pnlSliderUC.Controls.Add(sliderUserControl);
+            }
         }
     }
 }

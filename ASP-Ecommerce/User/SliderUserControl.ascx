@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SliderUserControl.ascx.cs" Inherits="ASP_Ecommerce.User.SliderUserControl" %>
 
-                <div id="header-carousel" class="carousel slide" data-ride="carousel">
+<div id="header-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active" style="height: 410px;">
                             <img class="img-fluid" src="../UserTemplate/img/carousel-1.jpg" alt="Image">
@@ -33,4 +33,4 @@
                             <span class="carousel-control-next-icon mb-n2"></span>
                         </div>
                     </a>
-                </div>
+</div>

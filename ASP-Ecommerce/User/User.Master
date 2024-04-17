@@ -11,7 +11,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="UserTemplate/img/favicon.ico" rel="icon">
+    <link href="../UserTemplate/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -21,7 +21,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="UserTemplate/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../UserTemplate/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../UserTemplate/css/style.css" rel="stylesheet">
@@ -34,7 +34,7 @@
 
     <%
         string navClass = string.Empty;
-        if (Request.Url.AbsolutePath.Contains("Default.aspx"))
+        if (Request.Url.AbsolutePath.ToString().Contains("Default.aspx"))
         {
             navClass = "show";
         }
@@ -126,11 +126,11 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Shopping Cart</a>
-                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
+                                    <a href="Cart.aspx" class="dropdown-item">Shopping Cart</a>
+                                    <a href="Checkout.aspx" class="dropdown-item">Checkout</a>
                                 </div>
                             </div>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="Contact.aspx" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
                             <a href="" class="nav-item nav-link">Login</a>
@@ -139,7 +139,7 @@
                     </div>
                 </nav>
 
-                <asp:Panel ID="pnlControlUC"></asp:Panel>
+                <asp:Panel ID="pnlSliderUC" runat="server"></asp:Panel>
 
             </div>
         </div>
