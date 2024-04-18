@@ -18,12 +18,29 @@ namespace ASP_Ecommerce.Admin
         SqlConnection con;
         SqlCommand cmd;
         SqlDataReader dr;
+        SqlDataAdapter sda;
         DataTable dt;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             lblImg.Visible = false;
+            getCategories();
         }
+
+        void getCategories()
+        {
+            // Utils.OpenConnection();
+
+            con = Utils.GetConnection();
+            cmd = new SqlCommand("Category_Crud", con);
+            cmd.Parameters.AddWithValue("@Action", "GETALL");
+            cmd.CommandType = CommandType.StoredProcedure;
+            sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            sda.Fill(dt);
+            rCategory.DataSource = dt;
+            rCategory.DataBind();
+        }   
 
         protected void btnAddOnUpdate_Click(object sender, EventArgs e)
         {
@@ -69,7 +86,7 @@ namespace ASP_Ecommerce.Admin
                 cmd.CommandType = CommandType.StoredProcedure;
                 try
                 {
-                    con.Open();
+                    // con.Open();
                     cmd.ExecuteNonQuery();
                     actionName = categoryId == 0 ? "inserted" : "updated";
                     lblImg.Visible = true;
@@ -90,10 +107,6 @@ namespace ASP_Ecommerce.Admin
                 }
                 finally
                 {
-                    if (con != null && con.State != ConnectionState.Closed)
-                    {
-                        con.Close(); // Close the connection if open
-                    }
                     Utils.CloseConnection(); // Close the connection managed by Utils
                 }   
             }
