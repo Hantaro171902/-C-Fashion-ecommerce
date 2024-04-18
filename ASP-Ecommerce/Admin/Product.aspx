@@ -11,7 +11,7 @@
         <div class="col-sm-12 col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h4 class-="card-title">Product</h4>
+                    <h4 class="card-title">Product</h4>
                     <hr />
                 
                     <div class="form-body pb-5">

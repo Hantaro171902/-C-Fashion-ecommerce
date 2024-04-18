@@ -23,7 +23,7 @@ namespace ASP_Ecommerce.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["breadCumbTitle"] = "Mangae Category";
+            Session["breadCumbTitle"] = "Manage Category";
             Session["breadCumbPage"] = "Category";
             getCategories();
         }

@@ -129,7 +129,7 @@
                                              <i class="fas fa-edit"></i>
                                          </asp:LinkButton>
                                          <asp:LinkButton ID="lbDelete" Text="Delete" runat="server" CssClass="badge badge-danger"
-                                             CommandAgrument='<%# Eval("CategoryId") %>' CommandName="delete" CausesValidation="false">>
+                                             CommandAgrument='<%# Eval("CategoryId") %>' CommandName="delete" CausesValidation="false">
                                              <i class="fas fa-trash-alt"></i>
                                          </asp:LinkButton>
                                      </td>
