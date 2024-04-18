@@ -1,5 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Category.aspx.cs" Inherits="ASP_Ecommerce.Admin.Category" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
+    <script>
+        function ImagePreview(input) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('<%#ImagePreview.ClientID%>').prop('src', e.target.result)
+                    .width(200)
+                    .height(200);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -31,7 +43,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <asp:FileUpload ID="fuCategoryImage" runat="server" CssClass="form-control" />
+                                <asp:FileUpload ID="fuCategoryImage" runat="server" CssClass="form-control"
+                                    onchange="ImagePreview(this);"/>
                                 <asp:HiddenField ID="hfCategoryId" runat="server" Value="0"/>
                             </div>
                         </div>
@@ -100,7 +113,8 @@
                                          </asp:Label>
                                      </td>
 
-                                     <td> <%# Eval("CreatedDate") != DBNull.Value ? Eval("CreatedDate") : "N/A" %></td>
+                                     <td> <%# Eval("CreatedDate") %></td>
+
                                      <td>
                                          <asp:LinkButton ID="lbEdit" Text="Edit" runat="server" CssClass="badge badge-primary">
                                              <i class="fas fa-edit"></i>
@@ -109,10 +123,14 @@
                                              <i class="fas fa-trash-alt"></i>
                                          </asp:LinkButton>
                                      </td>
+
                                  </tr>
                              </ItemTemplate>
 
-                             <FooterTemplate></FooterTemplate>
+                             <FooterTemplate>
+                                 </tbody>
+                                 </table>
+                             </FooterTemplate>
                          </asp:Repeater>
                      </div>
                  </div>
