@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using System.IO;
 using System.Configuration.Internal;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace ASP_Ecommerce.Admin
 {
@@ -48,13 +49,14 @@ namespace ASP_Ecommerce.Admin
                     imagePath = "Images/Category/" + newImageName.ToString() + fileExtension;
                     fuCategoryImage.PostedFile.SaveAs(Server.MapPath("~/Images/Category/") + newImageName.ToString() + fileExtension);
                     cmd.Parameters.AddWithValue("@CategoryImageUrl", imagePath);
-
+                    isValidtoExecute = true;
                 }
                 else
                 {
                     lblImg.Visible = false;
                     lblImg.Text = "Please select .jpg .png or .gif image";
                     lblImg.CssClass = "alert alert-danger";
+                    isValidtoExecute = false;
                 }
             }
             else
@@ -69,20 +71,30 @@ namespace ASP_Ecommerce.Admin
                 {
                     con.Open();
                     cmd.ExecuteNonQuery();
-                    actionName = categoryId == 0 ? "inserted" : "Successful";
+                    actionName = categoryId == 0 ? "inserted" : "updated";
                     lblImg.Visible = true;
                     lblImg.Text = "Category " + actionName + " successfully";
                     lblImg.CssClass = "alert alert-success";
+
+                    Debug.Print("Insert success");
+
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     lblImg.Visible = true;
                     lblImg.Text = "Failed to insert category: " + ex.Message;
                     lblImg.CssClass = "alert alert-danger";
+
+                    Debug.Print("Insert failed: " + ex.Message);
+
                 }
                 finally
                 {
-                    con.Close();
+                    if (con != null && con.State != ConnectionState.Closed)
+                    {
+                        con.Close(); // Close the connection if open
+                    }
+                    Utils.CloseConnection(); // Close the connection managed by Utils
                 }   
             }
         }
