@@ -25,6 +25,24 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../UserTemplate/css/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
+    <script>
+        $(function () {
+            // this will get the full URL at the address bar
+            var url = window.location.href;
+
+            // passes on every "a" tag
+            $("#navbarCollapse a").each(function () {
+                // checks if its the same on the address bar
+                if (url == (this.href)) {
+                    $(this).addClass("active");
+                }
+            });
+        }
+
+    </script>
  
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -120,7 +138,7 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="Default.aspx" class="nav-item nav-link active">Home</a>
+                            <a href="Default.aspx" class="nav-item nav-link">Home</a>
                             <a href="Shop.aspx" class="nav-item nav-link">Shop</a>
                             <a href="ShopDetail.aspx" class="nav-item nav-link">Shop Detail</a>
                             <div class="nav-item dropdown">
@@ -215,7 +233,7 @@
                 </p>
             </div>
             <div class="col-md-6 px-xl-0 text-center text-md-right">
-                <img class="img-fluid" src="img/payments.png" alt="">
+                <img class="img-fluid" src="../UserTemplate/img/payments.png" alt="">
             </div>
         </div>
     </div>
@@ -226,7 +244,7 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
     
-            <!-- JavaScript Libraries -->
+    <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="../UserTemplate/lib/easing/easing.min.js"></script>
