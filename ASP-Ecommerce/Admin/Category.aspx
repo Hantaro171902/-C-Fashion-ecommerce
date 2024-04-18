@@ -110,7 +110,7 @@
                                  <tr>
                                      <td class="table-plus"> <%# Eval("CategoryName") %></td>
                                      <td> 
-                                         <img width="40" src="<%# ASP_Ecommerce.Utils.getImageUrl( Eval("CategoryImageUrl")) %>" alt="image" />
+                                         <img width="40" src='<%# ASP_Ecommerce.Utils.getImageUrl( Eval("CategoryImageUrl")) %>' alt="image" />
                                      </td>
 
                                      <td>
