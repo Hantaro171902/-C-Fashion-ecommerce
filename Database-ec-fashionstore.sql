@@ -2,12 +2,15 @@
 
 USE EC_FashionStore;
 
+DROP TABLE IF EXISTS Orders, Payment, Contact, Cart, Wishlist, ProductReview, 
+						Users, Roles, ProductImages, Product, SubCategory, Category;
+
 -- Create Table category
 CREATE TABLE Category
 (
 	CategoryId INT PRIMARY KEY IDENTITY(1,1),
 	CategoryName VARCHAR(100) NOT NULL,
-	CategoryImageUrl VARCHAR(MAX) NOT NULL,
+	-- CategoryImageUrl VARCHAR(MAX) NOT NULL,
 	IsActive BIT NOT NULL,
 	CreatedDate DATETIME NOT NULL
 )
@@ -15,6 +18,7 @@ CREATE TABLE Category
 DROP TABLE Category;
 
 -- Create Table SubCategory
+/*
 CREATE TABLE SubCategory
 (
 	SubCategoryId INT PRIMARY KEY IDENTITY(1,1),
@@ -24,17 +28,19 @@ CREATE TABLE SubCategory
 	CreatedDate DATETIME NOT NULL,
 	FOREIGN KEY (CategoryId) REFERENCES Category(CategoryId) ON DELETE CASCADE
 )
+*/
 
-DROP TABLE SubCategory;
+-- DROP TABLE SubCategory;
 
 -- Create Table Product
 CREATE TABLE Product
 (
 	ProductId INT PRIMARY KEY IDENTITY(1,1),
 	ProductName VARCHAR(100) NOT NULL,
-	ShortDescription VARCHAR(200) NOT NULL,
-	LongDescription VARCHAR(MAX) NOT NULL,
-	AddictionDescription VARCHAR(MAX) NOT NULL,
+	-- ShortDescription VARCHAR(200) NOT NULL,
+	-- LongDescription VARCHAR(MAX) NOT NULL,
+	-- AddictionDescription VARCHAR(MAX) NOT NULL,
+	Description VARCHAR(MAX) NOT NULL,
 	Price DECIMAL(18,2) NOT NULL,
 	Discount DECIMAL(18,2) NOT NULL,
 	Quantity INT NOT NULL,
@@ -42,8 +48,8 @@ CREATE TABLE Product
 	Color VARCHAR(50) NOT NULL,
 	ProductImageUrl VARCHAR(MAX) NOT NULL,
 	CategoryId INT NOT NULL,
-	SubCategoryId INT NOT NULL,
-	Sold INT NOT NULL,
+	-- SubCategoryId INT NOT NULL,
+	-- Sold INT NOT NULL,
 	IsActive BIT NOT NULL,
 	CreatedDate DATETIME NOT NULL,
 	
@@ -85,11 +91,11 @@ CREATE TABLE Users
 	UserName VARCHAR(50) NULL UNIQUE,
 	Email VARCHAR(100) NULL,
 	Mobile VARCHAR(20) NULL,
-	Address VARCHAR(MAX) NULL,
-	PostCode VARCHAR(50) NULL,
+	-- Address VARCHAR(MAX) NULL,
+	-- PostCode VARCHAR(50) NULL,
 	Password VARCHAR(50) NULL,
 	RoleId INT NOT NULL,
-	ImageUrl VARCHAR(MAX) NULL,
+	-- ImageUrl VARCHAR(MAX) NULL,
 	CreatedDate DATETIME NOT NULL,
 	
 	FOREIGN KEY (RoleId) REFERENCES Roles(RoleId) ON DELETE CASCADE

@@ -7,6 +7,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
+
 CREATE PROCEDURE Category_Crud
 	-- Add the parameters for the stored procedure here
 	@Action VARCHAR(15),

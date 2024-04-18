@@ -23,7 +23,8 @@ namespace ASP_Ecommerce.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblMsg.Visible = false;
+            Session["breadCumbTitle"] = "Mangae Category";
+            Session["breadCumbPage"] = "Category";
             getCategories();
         }
 
@@ -137,7 +138,7 @@ namespace ASP_Ecommerce.Admin
         public void rCategory_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             lblMsg.Visible = false;
-            if (e.CommandName == "Edit")
+            if (e.CommandName == "edit")
             {
                 // int categoryId = Convert.ToInt32(e.CommandArgument);
 
@@ -159,7 +160,7 @@ namespace ASP_Ecommerce.Admin
                 hfCategoryId.Value = dt.Rows[0]["CategoryId"].ToString();
                 btnAddOnUpdate.Text = "Update";
             }
-            else if (e.CommandName == "Delete")
+            else if (e.CommandName == "delete")
             {
                 // int categoryId = Convert.ToInt32(e.CommandArgument);
                 Utils.OpenConnection();

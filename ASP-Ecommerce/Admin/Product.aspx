@@ -1,31 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Category.aspx.cs" Inherits="ASP_Ecommerce.Admin.Category" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Product.aspx.cs" Inherits="ASP_Ecommerce.Admin.Product" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script>
-        /* For disapearing the alert message */
-        window.onload = function () {
-            var seconds = 5;
-            setTimeout(function () {
-                document.getElementById("<% =lblMsg.ClientID %>").style.display = "none";
-            }, 1000);
-        }
-    </script>
-
-    <script>
-        function ImagePreview(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('<%#imagePreview.ClientID%>').prop('src', e.target.result)
-                        .width(200)
-                        .height(200);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    
     <div class="mb-4">
         <asp:Label ID="lblMsg" runat="server"></asp:Label>
     </div>
@@ -34,28 +11,28 @@
         <div class="col-sm-12 col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h4 class-="card-title">Category</h4>
+                    <h4 class-="card-title">Product</h4>
                     <hr />
                 
                     <div class="form-body pb-5">
-                        <label>Category Name</label>
+                        <label>Product Name</label>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <asp:TextBox ID="txtCategoryName" runat="server" CssClass="form-control" placeholder="Category Name"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfCategoryName" ForeColor="Red" Font-Size="Small" Display="Dynamic"
-                                        SafeFocusOnError="true" ErrorMessage="Category Name is required" ControlToValidate="txtCategoryName" runat="server" />
+                                    <asp:TextBox ID="txtProductName" runat="server" CssClass="form-control" placeholder="Product Name"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfProductName" ForeColor="Red" Font-Size="Small" Display="Dynamic"
+                                        SafeFocusOnError="true" ErrorMessage="Product Name is required" ControlToValidate="txtProductName" runat="server" />
                                 </div>
                             </div>
                         </div>
 
-                        <label>Category Image</label>
+                        <label>Product Image</label>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <asp:FileUpload ID="fuCategoryImage" runat="server" CssClass="form-control"
+                                    <asp:FileUpload ID="fuProductImage" runat="server" CssClass="form-control"
                                         onchange="ImagePreview(this);"/>
-                                    <asp:HiddenField ID="hfCategoryId" runat="server" Value="0"/>
+                                    <asp:HiddenField ID="hfProductId" runat="server" Value="0"/>
                                 </div>
                             </div>
                         </div>
@@ -86,10 +63,10 @@
         <div class="col-sm-12 col-md-8">
             <div class="card">
                  <div class="card-body">
-                     <h4 class-="card-title">Category List</h4>
+                     <h4 class-="card-title">Product List</h4>
                      <hr />
                      <div class="table-responsive">
-                         <asp:Repeater ID="rCategory" runat="server" OnItemCommand="rCategory_ItemCommand">
+                         <asp:Repeater ID="rProduct" runat="server" OnItemCommand="rProduct_ItemCommand">
 
                              <HeaderTemplate>
                                  <table class="table data-table-export table-hover nowrap">
@@ -108,9 +85,9 @@
 
                              <ItemTemplate>
                                  <tr>
-                                     <td class="table-plus"> <%# Eval("CategoryName") %></td>
+                                     <td class="table-plus"> <%# Eval("ProductName") %></td>
                                      <td> 
-                                         <img width="40" src="<%# ASP_Ecommerce.Utils.getImageUrl( Eval("CategoryImageUrl")) %>" alt="image" />
+                                         <img width="40" src="<%# ASP_Ecommerce.Utils.getImageUrl( Eval("ProductImageUrl")) %>" alt="image" />
                                      </td>
 
                                      <td>
@@ -125,11 +102,11 @@
 
                                      <td>
                                          <asp:LinkButton ID="lbEdit" Text="Edit" runat="server" CssClass="badge badge-primary"
-                                             CommandAgrument='<%# Eval("CategoryId") %>' CommandName="edit" CausesValidation="false">
+                                             CommandAgrument='<%# Eval("ProductId") %>' CommandName="edit" CausesValidation="false">
                                              <i class="fas fa-edit"></i>
                                          </asp:LinkButton>
                                          <asp:LinkButton ID="lbDelete" Text="Delete" runat="server" CssClass="badge badge-danger"
-                                             CommandAgrument='<%# Eval("CategoryId") %>' CommandName="delete" CausesValidation="false">>
+                                             CommandAgrument='<%# Eval("ProductId") %>' CommandName="delete" CausesValidation="false">>
                                              <i class="fas fa-trash-alt"></i>
                                          </asp:LinkButton>
                                      </td>
@@ -147,5 +124,4 @@
             </div>
         </div>
     </div>
-
 </asp:Content>
