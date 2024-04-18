@@ -27,6 +27,11 @@ namespace ASP_Ecommerce.Admin
             getCategories();
         }
 
+        protected void Page_Unload(object sender, EventArgs e)
+        {
+            Utils.CloseConnection(); // Close the connection when the page unloads
+        }
+
         void getCategories()
         {
             Utils.OpenConnection();
@@ -118,7 +123,7 @@ namespace ASP_Ecommerce.Admin
         }
 
 
-        void  clear()
+        void clear()
         {
             txtCategoryName.Text = string.Empty;
             cbIsActive.Checked = false;

@@ -60,7 +60,7 @@
             </div>
         </div>
  
-        <div class="col-sm-12 col-md-4">
+        <div class="col-sm-12 col-md-8">
             <div class="card">
                  <div class="card-body">
                      <h4 class-="card-title">Category List</h4>
@@ -69,12 +69,13 @@
                          <asp:Repeater ID="rCategory" runat="server">
 
                              <HeaderTemplate>
-                                 <table>
+                                 <table class="table data-table-export table-hover nowrap">
                                      <thead>
                                             <tr>
                                                 <th class="table-plus">Name</th>
                                                 <th>Image</th>
                                                 <th>IsActive</th>
+                                                <th>CreatedDate</th>
                                                 <th class="datatable-nosort">Action</th>
                                             </tr>
                                      </thead>
@@ -99,7 +100,7 @@
                                          </asp:Label>
                                      </td>
 
-                                     <td <%# Eval("CreateDated") %></td>
+                                     <td> <%# Eval("CreatedDate") != DBNull.Value ? Eval("CreatedDate") : "N/A" %></td>
                                      <td>
                                          <asp:LinkButton ID="lbEdit" Text="Edit" runat="server" CssClass="badge badge-primary">
                                              <i class="fas fa-edit"></i>

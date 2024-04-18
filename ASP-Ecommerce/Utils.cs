@@ -10,7 +10,7 @@ namespace ASP_Ecommerce
 {
     public class Utils
     {
-        private static SqlConnection ? con; // = null;
+        private static SqlConnection con; // = null;
 
         public static SqlConnection GetConnection()
         {
