@@ -26,6 +26,12 @@ BEGIN
 		SELECT * FROM Category
 	END
 
+	-- GET CATEGORY BY ID
+	IF(@Action = 'GETBYID')
+	BEGIN
+		SELECT * FROM Category WHERE CategoryId = @CategoryId;
+	END
+
 	-- INSERT CATEGORY
 	IF(@Action = 'INSERT')
 	BEGIN

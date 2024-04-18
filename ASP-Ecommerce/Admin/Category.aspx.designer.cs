@@ -15,13 +15,13 @@ namespace ASP_Ecommerce.Admin
     {
 
         /// <summary>
-        /// lblImg control.
+        /// lblMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblImg;
+        protected global::System.Web.UI.WebControls.Label lblMsg;
 
         /// <summary>
         /// txtCategoryName control.
@@ -87,13 +87,13 @@ namespace ASP_Ecommerce.Admin
         protected global::System.Web.UI.WebControls.Button btnClear;
 
         /// <summary>
-        /// ImagePreview control.
+        /// imagePreview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImagePreview;
+        protected global::System.Web.UI.WebControls.Image imagePreview;
 
         /// <summary>
         /// rCategory control.
