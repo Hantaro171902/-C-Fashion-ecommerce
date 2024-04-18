@@ -29,7 +29,7 @@ namespace ASP_Ecommerce.Admin
 
         void getCategories()
         {
-            // Utils.OpenConnection();
+            Utils.OpenConnection();
 
             con = Utils.GetConnection();
             cmd = new SqlCommand("Category_Crud", con);

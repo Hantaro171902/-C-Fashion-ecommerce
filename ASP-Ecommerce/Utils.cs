@@ -10,7 +10,7 @@ namespace ASP_Ecommerce
 {
     public class Utils
     {
-        private static SqlConnection con; // = null;
+        private static SqlConnection ? con; // = null;
 
         public static SqlConnection GetConnection()
         {
@@ -75,6 +75,7 @@ namespace ASP_Ecommerce
         public static string getImageUrl(Object url)
         {
             string url1 = string.Empty;
+
             if (string.IsNullOrEmpty(url.ToString()) || url == DBNull.Value)
             {
                 url1 = "../Images/No_image.png";
