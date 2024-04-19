@@ -42,6 +42,15 @@ namespace ASP_Ecommerce.Admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfName;
 
         /// <summary>
+        /// hfUserID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfUserID;
+
+        /// <summary>
         /// txtUserName control.
         /// </summary>
         /// <remarks>
@@ -114,15 +123,6 @@ namespace ASP_Ecommerce.Admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfPassword;
 
         /// <summary>
-        /// cbIsActive control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbIsActive;
-
-        /// <summary>
         /// btnAddOnUpdate control.
         /// </summary>
         /// <remarks>
@@ -139,15 +139,6 @@ namespace ASP_Ecommerce.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnClear;
-
-        /// <summary>
-        /// imagePreview control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imagePreview;
 
         /// <summary>
         /// rUser control.

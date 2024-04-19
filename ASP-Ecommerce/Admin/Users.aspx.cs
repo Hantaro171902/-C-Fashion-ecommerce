@@ -59,22 +59,20 @@ namespace ASP_Ecommerce.Admin
 
         protected void btnAddOnUpdate_Click(object sender, EventArgs e)
         {
-            bool isValidtoExecute = false;
-            int userId = 0;
+            bool isValidtoExecute = true;
+            int userId = Convert.ToInt32(hfUserID.Value);
             int roleId = 2; // This mean user role = customer
             string actionName = string.Empty;
 
             Utils.OpenConnection();
 
             con = Utils.GetConnection();
-            cmd = new SqlCommand("User_Crud", con);
+            cmd = new SqlCommand("Users_Crud", con);
             cmd.Parameters.AddWithValue("@Action", userId == 0 ? "INSERT" : "UPDATE");
-            cmd.Parameters.AddWithValue("@UserId", userId);
-            cmd.Parameters.AddWithValue("@Name", txtName);
+            cmd.Parameters.AddWithValue("@Name", txtName.Text);
             cmd.Parameters.AddWithValue("@UserName", txtUserName.Text.Trim());
-            cmd.Parameters.AddWithValue("@Name", txtEmail);
-            cmd.Parameters.AddWithValue("@Mobile", txtMobile);
-            cmd.Parameters.AddWithValue("@Password", txtPassword);
+            cmd.Parameters.AddWithValue("@Mobile", txtMobile.Text);
+            cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
             cmd.Parameters.AddWithValue("@RoleId", roleId);
 
 

@@ -27,6 +27,14 @@
                             </div>
                         </div>
 
+                         <div class="row">
+                             <div class="col-md-12">
+                                 <div class="form-group">
+                                     <asp:HiddenField ID="hfUserID" runat="server" Value="0" />
+                                 </div>
+                             </div>
+                         </div>
+
                         <label>User Name</label>
                         <div class="row">
                             <div class="col-md-12">

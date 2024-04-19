@@ -79,6 +79,7 @@
                                             </tr>
                                     </thead>
                                     <tbody>
+                               
 
                             </HeaderTemplate>
 
@@ -98,12 +99,18 @@
                                     <td> <%# Eval("CreatedDate") %></td>
 
                                     <td>
-                                        <asp:LinkButton ID="lbEdit" Text="Edit" runat="server" CssClass="badge badge-primary"
-                                            CommandAgrument='<%# Eval("CategoryId") %>' CommandName="edit" CausesValidation="false">
+                                        <asp:LinkButton ID="lbEdit" Text="Edit" runat="server" 
+                                            CssClass="badge badge-primary"
+                                            CommandAgrument='<%# Eval("CategoryId") %>' 
+                                            CommandName="edit" 
+                                            CausesValidation="false">
                                             <i class="fas fa-edit"></i>
                                         </asp:LinkButton>
-                                        <asp:LinkButton ID="lbDelete" Text="Delete" runat="server" CssClass="badge badge-danger"
-                                            CommandAgrument='<%# Eval("CategoryId") %>' CommandName="delete" CausesValidation="false">
+                                        <asp:LinkButton ID="lbDelete" Text="Delete" runat="server" 
+                                            CssClass="badge badge-danger"
+                                            CommandAgrument='<%# Eval("CategoryId") %>' 
+                                            CommandName="delete" 
+                                            CausesValidation="false">
                                             <i class="fas fa-trash-alt"></i>
                                         </asp:LinkButton>
                                     </td>

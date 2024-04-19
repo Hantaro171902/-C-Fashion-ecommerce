@@ -64,30 +64,6 @@ namespace ASP_Ecommerce.Admin
             cmd.Parameters.AddWithValue("@CategoryName", txtCategoryName.Text.Trim());
             cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
 
-            // if (fuCategoryImage.HasFile)
-            // {
-            //     if (Utils.isValidExtension(fuCategoryImage.FileName))
-            //     {
-            //         string newImageName = Utils.getUniqueId();
-            //         fileExtension = Path.GetExtension(fuCategoryImage.FileName);
-            //         imagePath = "Images/Category/" + newImageName.ToString() + fileExtension;
-            //         fuCategoryImage.PostedFile.SaveAs(Server.MapPath("~/Images/Category/") + newImageName.ToString() + fileExtension);
-            //         cmd.Parameters.AddWithValue("@CategoryImageUrl", imagePath);
-            //         isValidtoExecute = true;
-            //     }
-            //     else
-            //     {
-            //         lblMsg.Visible = false;
-            //         lblMsg.Text = "Please select .jpg .png or .gif image";
-            //         lblMsg.CssClass = "alert alert-danger";
-            //         isValidtoExecute = false;
-            //     }
-            // }
-            // else
-            // {
-            //     isValidtoExecute = true;
-            // }
-
             if (isValidtoExecute)
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -126,14 +102,13 @@ namespace ASP_Ecommerce.Admin
             clear();
         }
 
-
         void clear()
         {
             txtCategoryName.Text = string.Empty;
             cbIsActive.Checked = false;
             hfCategoryID.Value = "0";
             btnAddOnUpdate.Text = "Add";
-            // imagePreview.ImageUrl = string.Empty;
+        
         }
 
         public void rCategory_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -141,23 +116,20 @@ namespace ASP_Ecommerce.Admin
             lblMsg.Visible = false;
             if (e.CommandName == "edit")
             {
-                // int categoryId = Convert.ToInt32(e.CommandArgument);
-
+               
                 Utils.OpenConnection();
 
-                con = Utils.GetConnection();
+                con = con = new SqlConnection("Server=DESKTOP-L8SPRR5\\SQLEXPRESS; Database=EC_FashionStore; Integrated Security=True");
+                con.Open();
                 cmd = new SqlCommand("Category_Crud", con);
                 cmd.Parameters.AddWithValue("@Action", "GETBYID");
-                cmd.Parameters.AddWithValue("@CategoryId", e.CommandArgument);
+                cmd.Parameters.AddWithValue("@CategoryId", 2);
                 cmd.CommandType = CommandType.StoredProcedure;
                 sda = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 sda.Fill(dt);
                 txtCategoryName.Text = dt.Rows[0]["CategoryName"].ToString();
                 cbIsActive.Checked = Convert.ToBoolean(dt.Rows[0]["IsActive"]);
-                // imagePreview.ImageUrl = string.IsNullOrEmpty(dt.Rows[0]["CategoryImageUrl"].ToString()) ? "../Images/No_image.png" : "../" + dt.Rows[0]["CategoryImageUrl"].ToString();
-                // imagePreview.Height = 200;
-                // imagePreview.Width = 200;
                 hfCategoryID.Value = dt.Rows[0]["CategoryId"].ToString();
                 btnAddOnUpdate.Text = "Update";
             }
@@ -169,23 +141,15 @@ namespace ASP_Ecommerce.Admin
                 con = Utils.GetConnection();
                 cmd = new SqlCommand("Category_Crud", con);
                 cmd.Parameters.AddWithValue("@Action","DELETE");
-                cmd.Parameters.AddWithValue("@CategoryId", e.CommandArgument);
-                Console.WriteLine(e.CommandArgument);
+                cmd.Parameters.AddWithValue("@CategoryId",2);
                 cmd.CommandType = CommandType.StoredProcedure;
                 sda = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 sda.Fill(dt);
-
-                // Assuming 'dt' is your DataTable object
-                int rowCount = dt.Rows.Count;
-                Console.WriteLine("Number of rows in the DataTable: " + rowCount);
-
-
-                txtCategoryName.Text = dt.Rows[0]["CategoryName"].ToString();
-
-                Console.WriteLine("CategoryName: " + dt.Rows[0]["CategoryName"].ToString());
+              
+                txtCategoryName.Text = dt.Rows[0]["CategoryName"].ToString();      
                 cbIsActive.Checked = Convert.ToBoolean(dt.Rows[0]["IsActive"]);
-                // imagePreview.ImageUrl = string.IsNullOrEmpty(dt.Rows[0]["CategoryImageUrl"].ToString()) ? "../Images/No_image.png" : "../" + dt.Rows[0]["CategoryImageUrl"].ToString();
+          
                 rCategory.DataSource = dt;
                 rCategory.DataBind();
                 try

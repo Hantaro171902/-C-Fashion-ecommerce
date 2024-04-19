@@ -1,19 +1,31 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Register.master.cs" Inherits="ASP_Ecommerce.Register" %>
 
 <!DOCTYPE html>
-
-<html>
-<head runat="server">
-    <title></title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Registration Page</title>
+<style>
+    body { font-family: Arial, sans-serif; }
+    .register-container { width: 300px; margin: 100px auto; padding: 20px; border: 1px solid #ccc; }
+    input[type="text"], input[type="email"], input[type="password"], input[type="tel"] { width: 100%; padding: 10px; margin: 10px 0; }
+    input[type="submit"] { width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+    input[type="submit"]:hover { background-color: #0056b3; }
+</style>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
+<div class="register-container">
+    <h2>Register</h2>
+    <form action="RegisterHandler.aspx" method="post">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="mobile" placeholder="Mobile Number">
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="submit" value="Register">
     </form>
+</div>
 </body>
 </html>
+
+

@@ -14,7 +14,7 @@ CREATE PROCEDURE Users_Crud
 	@Email VARCHAR(100) = NULL,
 	@Mobile VARCHAR(20) = NULL,
 	@Password VARCHAR(50) = NULL,
-	@RoledId INT = NULL
+	@RoleId INT = NULL
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from

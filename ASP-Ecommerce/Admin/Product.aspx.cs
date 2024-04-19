@@ -75,16 +75,13 @@ namespace ASP_Ecommerce.Admin
         {
             string actionName = string.Empty, imagePath = string.Empty, fileExtension = string.Empty;
             bool isValidtoExecute = false;
-            int productId = Convert.ToInt32(hfProductId.Value);
-            
-
+            int productId = Convert.ToInt32(hfProductId.Value);         
 
             Utils.OpenConnection();
 
             con = Utils.GetConnection();
             cmd = new SqlCommand("Product_Crud", con);
-            cmd.Parameters.AddWithValue("@Action", productId == 0 ? "INSERT" : "UPDATE");
-            cmd.Parameters.AddWithValue("@ProductId", productId);
+            cmd.Parameters.AddWithValue("@Action", productId == 0 ? "INSERT" : "UPDATE");   
             cmd.Parameters.AddWithValue("@ProductName", txtProductName.Text.Trim());
             cmd.Parameters.AddWithValue("@Description", txtDescription.Text);
             cmd.Parameters.AddWithValue("@Price", txtPrice.Text);
@@ -178,7 +175,6 @@ namespace ASP_Ecommerce.Admin
             if (e.CommandName == "edit")
             {
                 // int productId = Convert.ToInt32(e.CommandArgument);
-
                 Utils.OpenConnection();
 
                 con = Utils.GetConnection();
