@@ -1,28 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Category.aspx.cs" Inherits="ASP_Ecommerce.Admin.Category" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <!-- <script>
-        /* For disapearing the alert message */
-        window.onload = function () {
-            var seconds = 5;
-            setTimeout(function () {
-                document.getElementById("<% =lblMsg.ClientID %>").style.display = "none";
-            }, 1000);
-        }
-    </script>
-
-    <script>
-        function ImagePreview(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('<%#imagePreview.ClientID%>').prop('src', e.target.result)
-                        .width(200)
-                        .height(200);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script> -->
+   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -49,21 +27,10 @@
                             </div>
                         </div>
 
-                        <!-- <label>Category Image</label>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <asp:FileUpload ID="fuCategoryImage" runat="server" CssClass="form-control"
-                                        onchange="ImagePreview(this);"/>
-                                    <asp:HiddenField ID="hfCategoryId" runat="server" Value="0"/>
-                                </div>
-                            </div>
-                        </div> -->
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <asp:HiddenField ID="hfCategoryId" runat="server" Value="0"/>
+                                    <asp:HiddenField ID="hfCategoryID" runat="server" Value="0" />
                                 </div>
                             </div>
                         </div>
@@ -85,7 +52,7 @@
                     </div>
 
                     <div>
-                        <asp:Image ID="imagePreview" runat="server" CssClass="img-thumbnail" AlternateText="image" />
+                        
                     </div>
                 </div>
             </div>
@@ -119,10 +86,7 @@
                                 <tr>
                                     <td class="table-plus"> <%# Eval("CategoryId") %></td>
                                     <td> <%# Eval("CategoryName") %></td>
-                                    <!-- <td> 
-                                        <img width="40" src='<%# ASP_Ecommerce.Utils.getImageUrl( Eval("CategoryImageUrl")) %>' alt="image" />
-                                    </td> -->
-
+                                  
                                     <td>
                                         <asp:Label ID="lblIsActive" 
                                                     Text='<%# (bool)Eval("IsActive") == true ? "Active" : "In-Active" %>'

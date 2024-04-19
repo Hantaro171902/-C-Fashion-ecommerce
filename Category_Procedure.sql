@@ -13,7 +13,7 @@ CREATE PROCEDURE Category_Crud
 	@Action VARCHAR(15),
 	@CategoryId INT = NULL,
 	@CategoryName VARCHAR(100)  = NULL,
-	@CategoryImageUrl VARCHAR(MAX) = NULL,
+	-- @CategoryImageUrl VARCHAR(MAX) = NULL,
 	@IsActive BIT = FALSE
 AS
 BEGIN
@@ -36,27 +36,18 @@ BEGIN
 	-- INSERT CATEGORY
 	IF(@Action = 'INSERT')
 	BEGIN
-		INSERT INTO Category(CategoryName, CategoryImageUrl, IsActive, CreatedDate)
-		VALUES(@CategoryName, @CategoryImageUrl, @IsActive, GETDATE())
+		INSERT INTO Category(CategoryName, IsActive, CreatedDate)
+		VALUES(@CategoryName, @IsActive, GETDATE())
 	END
 
 	-- UPDATE CATEGORY
 	IF(@Action = 'UPDATE')
 	BEGIN
-		DECLARE @UPDATE_IMAGE VARCHAR(20)
-		SELECT @UPDATE_IMAGE = (CASE WHEN @CategoryImageUrl IS NULL THEN 'NO' ELSE 'YES' END)
-		IF (@UPDATE_IMAGE = 'NO')
-			BEGIN
-				UPDATE Category
-				SET CategoryName = @CategoryName, IsActive = @IsActive
-				WHERE @CategoryId = @CategoryId
-			END
-		ELSE
-				BEGIN
-				UPDATE Category
-				SET CategoryName = @CategoryName, CategoryImageUrl = @CategoryImageUrl, IsActive = @IsActive
-				WHERE @CategoryId = @CategoryId
-			END
+		
+		UPDATE Category
+		SET CategoryName = @CategoryName, IsActive = @IsActive
+		WHERE CategoryId = @CategoryId
+
 	END
 
 	-- DELETE CATEGORY
@@ -72,6 +63,8 @@ BEGIN
 		WHERE c.IsActive = 1 ORDER BY c.CategoryName
 	END
 
-
 END
 GO
+
+
+DROP PROCEDURE IF EXISTS Category_Crud;

@@ -42,22 +42,13 @@ namespace ASP_Ecommerce.Admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfCategoryName;
 
         /// <summary>
-        /// fuCategoryImage control.
+        /// hfCategoryID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fuCategoryImage;
-
-        /// <summary>
-        /// hfCategoryId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfCategoryId;
+        protected global::System.Web.UI.WebControls.HiddenField hfCategoryID;
 
         /// <summary>
         /// cbIsActive control.
@@ -85,15 +76,6 @@ namespace ASP_Ecommerce.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnClear;
-
-        /// <summary>
-        /// imagePreview control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imagePreview;
 
         /// <summary>
         /// rCategory control.
