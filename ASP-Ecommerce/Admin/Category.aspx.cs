@@ -50,7 +50,8 @@ namespace ASP_Ecommerce.Admin
 
         protected void btnAddOnUpdate_Click(object sender, EventArgs e)
         {
-            string actionName = string.Empty, imagePath = string.Empty, fileExtension = string.Empty;
+            // string actionName = string.Empty, imagePath = string.Empty, fileExtension = string.Empty;
+            string actionName = string.Empty;
             bool isValidtoExecute = false;
             int categoryId = Convert.ToInt32(hfCategoryId.Value);
 
@@ -63,29 +64,29 @@ namespace ASP_Ecommerce.Admin
             cmd.Parameters.AddWithValue("@CategoryName", txtCategoryName.Text.Trim());
             cmd.Parameters.AddWithValue("@IsActive", cbIsActive.Checked);
 
-            if (fuCategoryImage.HasFile)
-            {
-                if (Utils.isValidExtension(fuCategoryImage.FileName))
-                {
-                    string newImageName = Utils.getUniqueId();
-                    fileExtension = Path.GetExtension(fuCategoryImage.FileName);
-                    imagePath = "Images/Category/" + newImageName.ToString() + fileExtension;
-                    fuCategoryImage.PostedFile.SaveAs(Server.MapPath("~/Images/Category/") + newImageName.ToString() + fileExtension);
-                    cmd.Parameters.AddWithValue("@CategoryImageUrl", imagePath);
-                    isValidtoExecute = true;
-                }
-                else
-                {
-                    lblMsg.Visible = false;
-                    lblMsg.Text = "Please select .jpg .png or .gif image";
-                    lblMsg.CssClass = "alert alert-danger";
-                    isValidtoExecute = false;
-                }
-            }
-            else
-            {
-                isValidtoExecute = true;
-            }
+            // if (fuCategoryImage.HasFile)
+            // {
+            //     if (Utils.isValidExtension(fuCategoryImage.FileName))
+            //     {
+            //         string newImageName = Utils.getUniqueId();
+            //         fileExtension = Path.GetExtension(fuCategoryImage.FileName);
+            //         imagePath = "Images/Category/" + newImageName.ToString() + fileExtension;
+            //         fuCategoryImage.PostedFile.SaveAs(Server.MapPath("~/Images/Category/") + newImageName.ToString() + fileExtension);
+            //         cmd.Parameters.AddWithValue("@CategoryImageUrl", imagePath);
+            //         isValidtoExecute = true;
+            //     }
+            //     else
+            //     {
+            //         lblMsg.Visible = false;
+            //         lblMsg.Text = "Please select .jpg .png or .gif image";
+            //         lblMsg.CssClass = "alert alert-danger";
+            //         isValidtoExecute = false;
+            //     }
+            // }
+            // else
+            // {
+            //     isValidtoExecute = true;
+            // }
 
             if (isValidtoExecute)
             {
@@ -111,7 +112,6 @@ namespace ASP_Ecommerce.Admin
                     lblMsg.CssClass = "alert alert-danger";
 
                     Debug.Print("Insert failed: " + ex.Message);
-
                 }
                 finally
                 {
@@ -132,7 +132,7 @@ namespace ASP_Ecommerce.Admin
             cbIsActive.Checked = false;
             hfCategoryId.Value = "0";
             btnAddOnUpdate.Text = "Add";
-            imagePreview.ImageUrl = string.Empty;
+            // imagePreview.ImageUrl = string.Empty;
         }
 
         public void rCategory_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -154,10 +154,10 @@ namespace ASP_Ecommerce.Admin
                 sda.Fill(dt);
                 txtCategoryName.Text = dt.Rows[0]["CategoryName"].ToString();
                 cbIsActive.Checked = Convert.ToBoolean(dt.Rows[0]["IsActive"]);
-                imagePreview.ImageUrl = string.IsNullOrEmpty(dt.Rows[0]["CategoryImageUrl"].ToString()) ? "../Images/No_image.png" : "../" + dt.Rows[0]["CategoryImageUrl"].ToString();
-                imagePreview.Height = 200;
-                imagePreview.Width = 200;
-                hfCategoryId.Value = dt.Rows[0]["CategoryId"].ToString();
+                // imagePreview.ImageUrl = string.IsNullOrEmpty(dt.Rows[0]["CategoryImageUrl"].ToString()) ? "../Images/No_image.png" : "../" + dt.Rows[0]["CategoryImageUrl"].ToString();
+                // imagePreview.Height = 200;
+                // imagePreview.Width = 200;
+                // hfCategoryId.Value = dt.Rows[0]["CategoryId"].ToString();
                 btnAddOnUpdate.Text = "Update";
             }
             else if (e.CommandName == "delete")
@@ -175,7 +175,7 @@ namespace ASP_Ecommerce.Admin
                 sda.Fill(dt);
                 txtCategoryName.Text = dt.Rows[0]["CategoryName"].ToString();
                 cbIsActive.Checked = Convert.ToBoolean(dt.Rows[0]["IsActive"]);
-                imagePreview.ImageUrl = string.IsNullOrEmpty(dt.Rows[0]["CategoryImageUrl"].ToString()) ? "../Images/No_image.png" : "../" + dt.Rows[0]["CategoryImageUrl"].ToString();
+                // imagePreview.ImageUrl = string.IsNullOrEmpty(dt.Rows[0]["CategoryImageUrl"].ToString()) ? "../Images/No_image.png" : "../" + dt.Rows[0]["CategoryImageUrl"].ToString();
                 rCategory.DataSource = dt;
                 rCategory.DataBind();
                 try

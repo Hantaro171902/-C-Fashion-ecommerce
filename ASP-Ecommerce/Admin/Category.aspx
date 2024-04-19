@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Category.aspx.cs" Inherits="ASP_Ecommerce.Admin.Category" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script>
+    <!-- <script>
         /* For disapearing the alert message */
         window.onload = function () {
             var seconds = 5;
@@ -22,7 +22,7 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-    </script>
+    </script> -->
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -49,12 +49,20 @@
                             </div>
                         </div>
 
-                        <label>Category Image</label>
+                        <!-- <label>Category Image</label>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <asp:FileUpload ID="fuCategoryImage" runat="server" CssClass="form-control"
                                         onchange="ImagePreview(this);"/>
+                                    <asp:HiddenField ID="hfCategoryId" runat="server" Value="0"/>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
                                     <asp:HiddenField ID="hfCategoryId" runat="server" Value="0"/>
                                 </div>
                             </div>
@@ -82,68 +90,70 @@
                 </div>
             </div>
         </div>
- 
+        
         <div class="col-sm-12 col-md-8">
             <div class="card">
-                 <div class="card-body">
-                     <h4 class-="card-title">Category List</h4>
-                     <hr />
-                     <div class="table-responsive">
-                         <asp:Repeater ID="rCategory" runat="server" OnItemCommand="rCategory_ItemCommand">
+                <div class="card-body">
+                    <h4 class-="card-title">Category List</h4>
+                    <hr />
+                    <div class="table-responsive">
+                        <asp:Repeater ID="rCategory" runat="server" OnItemCommand="rCategory_ItemCommand">
 
-                             <HeaderTemplate>
-                                 <table class="table data-table-export table-hover nowrap">
-                                     <thead>
+                            <HeaderTemplate>
+                                <table class="table data-table-export table-hover nowrap">
+                                    <thead>
                                             <tr>
-                                                <th class="table-plus">Name</th>
-                                                <th>Image</th>
+                                                <th class="table-plus>">ID</th>
+                                                <th>Name</th>
+                                                <!-- <th>Image</th> -->
                                                 <th>IsActive</th>
                                                 <th>CreatedDate</th>
                                                 <th class="datatable-nosort">Action</th>
                                             </tr>
-                                     </thead>
-                                     <tbody>
+                                    </thead>
+                                    <tbody>
 
-                             </HeaderTemplate>
+                            </HeaderTemplate>
 
-                             <ItemTemplate>
-                                 <tr>
-                                     <td class="table-plus"> <%# Eval("CategoryName") %></td>
-                                     <td> 
-                                         <img width="40" src='<%# ASP_Ecommerce.Utils.getImageUrl( Eval("CategoryImageUrl")) %>' alt="image" />
-                                     </td>
+                            <ItemTemplate>
+                                <tr>
+                                    <td class="table-plus"> <%# Eval("CategoryId") %></td>
+                                    <td> <%# Eval("CategoryName") %></td>
+                                    <!-- <td> 
+                                        <img width="40" src='<%# ASP_Ecommerce.Utils.getImageUrl( Eval("CategoryImageUrl")) %>' alt="image" />
+                                    </td> -->
 
-                                     <td>
-                                         <asp:Label ID="lblIsActive" 
+                                    <td>
+                                        <asp:Label ID="lblIsActive" 
                                                     Text='<%# (bool)Eval("IsActive") == true ? "Active" : "In-Active" %>'
                                                     CssClass='<%# (bool)Eval("IsActive") == true ? "badge badge-success" : "badge badge-danger" %>'
                                                     runat="server" >
-                                         </asp:Label>
-                                     </td>
+                                        </asp:Label>
+                                    </td>
 
-                                     <td> <%# Eval("CreatedDate") %></td>
+                                    <td> <%# Eval("CreatedDate") %></td>
 
-                                     <td>
-                                         <asp:LinkButton ID="lbEdit" Text="Edit" runat="server" CssClass="badge badge-primary"
-                                             CommandAgrument='<%# Eval("CategoryId") %>' CommandName="edit" CausesValidation="false">
-                                             <i class="fas fa-edit"></i>
-                                         </asp:LinkButton>
-                                         <asp:LinkButton ID="lbDelete" Text="Delete" runat="server" CssClass="badge badge-danger"
-                                             CommandAgrument='<%# Eval("CategoryId") %>' CommandName="delete" CausesValidation="false">
-                                             <i class="fas fa-trash-alt"></i>
-                                         </asp:LinkButton>
-                                     </td>
+                                    <td>
+                                        <asp:LinkButton ID="lbEdit" Text="Edit" runat="server" CssClass="badge badge-primary"
+                                            CommandAgrument='<%# Eval("CategoryId") %>' CommandName="edit" CausesValidation="false">
+                                            <i class="fas fa-edit"></i>
+                                        </asp:LinkButton>
+                                        <asp:LinkButton ID="lbDelete" Text="Delete" runat="server" CssClass="badge badge-danger"
+                                            CommandAgrument='<%# Eval("CategoryId") %>' CommandName="delete" CausesValidation="false">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </asp:LinkButton>
+                                    </td>
 
-                                 </tr>
-                             </ItemTemplate>
+                                </tr>
+                            </ItemTemplate>
 
-                             <FooterTemplate>
-                                 </tbody>
-                                 </table>
-                             </FooterTemplate>
-                         </asp:Repeater>
-                     </div>
-                 </div>
+                            <FooterTemplate>
+                                </tbody>
+                                </table>
+                            </FooterTemplate>
+                        </asp:Repeater>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

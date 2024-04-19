@@ -172,9 +172,16 @@
                                     <thead>
                                             <tr>
                                                 <th class="table-plus">Name</th>
-                                                <th>Image</th>
+                                                <th>Description</th>
+                                                <th>Price</th>
+                                                <th>Discount</th>
+                                                <th>Quantity</th> 
+                                                <th>Size</th>
+                                                <th>Color</th>
                                                 <th>IsActive</th>
+                                                <th>Image</th>
                                                 <th>CreatedDate</th>
+                                                <th>Category</th>
                                                 <th class="datatable-nosort">Action</th>
                                             </tr>
                                     </thead>
